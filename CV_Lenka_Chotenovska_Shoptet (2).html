@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lenka Chotěnovská – Senior UX Designer & AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FFFAF8;
+    --sand: #F5F1ED;
+    --mauve: #D4C4D4;
+    --sage: #B8D8D8;
+    --blush: #E8D4D0;
+    --warm: #7C3C3C;
+    --text: #2D2D2D;
+    --text-light: #6B6B6B;
+    --text-lighter: #A0A0A0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 13px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 48px;
+    background: var(--cream);
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .header-text h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .header-text h1 .accent {
+    color: var(--warm);
+  }
+
+  .tagline {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .contact-info a {
+    color: var(--warm);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-info a:hover {
+    color: var(--text);
+  }
+
+  .photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sand);
+  }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* DECORATIVE LINE */
+  .line {
+    height: 1px;
+    background: var(--sand);
+    margin: 48px 0;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 52px;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    color: var(--text);
+    position: relative;
+    padding-bottom: 12px;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--warm);
+    border-radius: 3px;
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-light);
+    max-width: 680px;
+  }
+
+  /* JOB ENTRIES */
+  .job {
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .job:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+
+  .job-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+  }
+
+  .job-title-badge {
+    display: inline-block;
+    background: var(--sand);
+    color: var(--warm);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .job-meta {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .job-company {
+    font-size: 13px;
+    color: var(--warm);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .job-period {
+    font-size: 12px;
+    color: var(--text-lighter);
+  }
+
+  .job-description {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-light);
+  }
+
+  .job ul {
+    list-style: none;
+    margin: 12px 0 0 0;
+  }
+
+  .job ul li {
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+
+  .job ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--mauve);
+    font-weight: 300;
+  }
+
+  /* SKILLS */
+  .skills-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .skill-category {
+    padding-bottom: 24px;
+  }
+
+  .skill-category-title {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .skill-list {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  .skill-list .separator {
+    color: var(--sand);
+    margin: 0 6px;
+  }
+
+  /* EDUCATION */
+  .edu-item {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .edu-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .edu-school {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .edu-detail {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  /* HIGHLIGHTS */
+  .highlight {
+    background: var(--sand);
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .highlight strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .page { padding: 40px 24px; }
+    .header { grid-template-columns: 1fr; gap: 24px; }
+    .job-header { flex-direction: column; }
+    .job-meta { text-align: left; }
+    .skills-section { grid-template-columns: 1fr; }
+    .header-text h1 { font-size: 36px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 40px 48px; }
+    .section-title::after { background: #999; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-text">
+      <h1>Lenka <span class="accent">Chotěnovská</span></h1>
+      <div class="tagline">Senior UX Designer · Grafická designérka · AI workflow</div>
+      <div class="contact-info">
+        <a href="mailto:lenka@chotenovska.cz">lenka@chotenovska.cz</a>
+        <div>+420 774 932 017</div>
+        <div>Praha 8</div>
+        <a href="https://chotenovska.cz">chotenovska.cz</a>
+        <a href="https://linkedin.com/in/chotenovska">linkedin.com/in/chotenovska</a>
+      </div>
+    </div>
+    <div class="photo">
+      <img src="portrait.webp" alt="Lenka Chotěnovská">
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+  <!-- O MNĚ -->
+  <div class="section">
+    <div class="section-title">O mně</div>
+    <p class="about-text">
+      Jsem grafická designérka s 20 lety praxe, která si uvědomila, že krásný design není dost — potřebuje smysl.
+      Proto jsem se vrhla do UX. Teď kombinuji svou zrakovou estetiku s promyšlenou uživatelskou zkušeností.
+      <br><br>
+      Pracuji v e-commerce (15 let), enterprise systémech (NDA, archiv, spisová služba), školách a někde mezi tím.
+      Zajímá mě, jak fungují lidé, procesy a produkty. AI mám v pracovním workflow jako běžný nástroj — Claude, Gemini, NotebookLM, Figma Make, Midjourney.
+      <br><br>
+      Hledám prostředí, kde má UX dopad, kde můžu růst, a kde se lidi nebojí zkoušet věci jinak.
+    </p>
+  </div>
+
+  <div class="line"></div>
+
+  <!-- ZKUŠENOSTI -->
+  <div class="section">
+    <div class="section-title">Zkušenosti</div>
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">UX Designer <span class="job-title-badge">AI workflow</span></div>
+          <div class="job-company">ICZ Group</div>
+        </div>
+        <div class="job-meta">
+          <div class="job-period">2025 – dosud</div>
+        </div>
+      </div>
+      <div class="job-description">
+        Návrh komplexních enterprise systémů: Národní digitální archiv, eSSL/G2 spisová služba, DESA, Šarka.
+        Pracuji s analytiky, vývojáři a stakeholdery na převodu složitých procesů do srozumitelných rozhraní.
+      </div>
+      <ul>
+        <li>AI-asistovaný prototyping — Claude pro rapid iteration NDA, Gemini a NotebookLM pro pochopení analýzy, Midjourney pro vizuální explorace</li>
+        <li>Zkušenost s AI v celém Double Diamond procesu — od discovery až po design systémy</li>
+        <li>Informační architektura, user flows, wireframy a interaktivní prototypy ve Figmě</li>
+        <li>Design rozhraní pro různé uživatelské role, oprávnění a stavy</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Graphic Designer (Externista)</div>
+          <div class="job-company">Shoptet</div>
+        </div>
+        <div class="job-meta">
+          <div class="job-period">2017 – 2019</div>
+        </div>
+      </div>
+      <div class="job-description">
+        Grafický design a komunikace pro Shoptet ekosystém. Navrhovala jsem microsites a markety pro různé cílové skupiny.
+      </div>
+      <ul>
+        <li>Shoptet Partneři, Poradna, Doplňky, Kariéra, Obchodiště, eShopište, Blog — design, layout, grafika</li>
+        <li>Spolupráce s product, marketing a dev týmy</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Graphic Designer & UX Designer – Freelance</div>
+          <div class="job-company">OSVČ</div>
+        </div>
+        <div class="job-meta">
+          <div class="job-period">2007 – dosud</div>
+        </div>
+      </div>
+      <div class="job-description">
+        E-commerce, branding, packaging a UX projekty pro české firmy. Dlouhodobá partnerství i jednorázové projekty.
+      </div>
+      <ul>
+        <li><strong>E-commerce &amp; UX:</strong> VFFOTO (fotografická optika), Czech Photo Travel (booking), Bylinca (e-shop), bramko.cz (katalog)</li>
+        <li><strong>Packaging &amp; branding:</strong> Allnature, Bylinca, Bellinda (200+ SKU, dlouhodobá péče), Krásná paní, Alarm Absolon</li>
+        <li><strong>UX research &amp; redesign:</strong> Redesign intranetu lesních/kamenných školek Maata/Jaata/vHaaji (2025) — stakeholder interviews, focus groups, IA, prototypy</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="line"></div>
+
+  <!-- DOVEDNOSTI -->
+  <div class="section">
+    <div class="section-title">Dovednosti</div>
+    <div class="skills-section">
+      <div class="skill-category">
+        <div class="skill-category-title">AI & Tools</div>
+        <div class="skill-list">
+          Claude <span class="separator">•</span> Gemini <span class="separator">•</span> NotebookLM <span class="separator">•</span> Figma Make <span class="separator">•</span> Midjourney <span class="separator">•</span> Figma <span class="separator">•</span> FigJam <span class="separator">•</span> Miro <span class="separator">•</span> Adobe Creative Suite
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-title">UX & Design</div>
+        <div class="skill-list">
+          Kvalitativní výzkum <span class="separator">•</span> Stakeholder interviews <span class="separator">•</span> Prototypování <span class="separator">•</span> IA <span class="separator">•</span> Design systémy <span class="separator">•</span> User testing <span class="separator">•</span> User flows <span class="separator">•</span> Wireframy
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-title">Doménová znalost</div>
+        <div class="skill-list">
+          E-commerce (15 let) <span class="separator">•</span> Packaging design <span class="separator">•</span> Enterprise systémy <span class="separator">•</span> Veřejná správa <span class="separator">•</span> Školkový software
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-title">Soft skills</div>
+        <div class="skill-list">
+          Produktové myšlení <span class="separator">•</span> Detailnost <span class="separator">•</span> Komunikace <span class="separator">•</span> Týmová spolupráce <span class="separator">•</span> Samostatnost
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+  <!-- VZDĚLÁNÍ -->
+  <div class="section">
+    <div class="section-title">Vzdělání</div>
+    
+    <div class="edu-item">
+      <div class="edu-school">KISK, Masarykova univerzita</div>
+      <div class="edu-detail">Design informačních služeb: AI prototypování v praxi • Kvalitativní výzkum (2024–2025)</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-school">Czechitas</div>
+      <div class="edu-detail">UX/UI Design</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-school">SŠUP Ústí nad Orlicí</div>
+      <div class="edu-detail">Reklamní a propagační činnost</div>
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+  <!-- HIGHLIGHT -->
+  <div class="highlight">
+    <strong>Proč Shoptet?</strong> Znám produkt, znám lidi, vím jak tam věci fungují. 
+    Chybí mi tam ten prostřed — e-commerce DNA, AI entusiasmus a sen o tom, aby design měl opravdu měřitelný dopad.
+    Jsem připravená to posunout dál.
+  </div>
+
+</div>
+</body>
+</html>
